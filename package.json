@@ -1,0 +1,7 @@
+{
+  "name": "serverless-todo-gatsby-netlify-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Muhammad Minhal Javed <minhal47@gmail.com>",
+  "license": "MIT"
+}
