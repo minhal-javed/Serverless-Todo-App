@@ -4,14 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "develop":"gatsby develop",
-    "build":"gatsby build",
-    "clean":"gatsby clean"
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean"
   },
-
   "dependencies": {
+    "@theme-ui/presets": "^0.3.5",
     "gatsby": "^2.30.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "theme-ui": "^0.3.5"
   }
 }
