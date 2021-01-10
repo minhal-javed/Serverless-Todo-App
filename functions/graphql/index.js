@@ -31,7 +31,10 @@ const resolvers = {
         const id=`key-${todoIndex}`
         todos[id]={id,text,done:false}
       },
-      updateTodoDone:(_,{id})=>{}
+      updateTodoDone:(_,{id})=>{
+          todos[id].done=true;
+          return todos[id];
+      }
   }
 
 };
