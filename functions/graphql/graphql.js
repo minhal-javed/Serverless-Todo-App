@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require("apollo-server-lambda");
 const faunadb = require("faunadb");
 const q = faunadb.query;
 
-var client = new faunadb.Client({ secret: process.env.FAUNA });
+var client = new faunadb.Client({ secret: "fnAD_TMlK5ACB15g_2rh4aOmQsoqWiiE1xWjEq_5" });
 
 const typeDefs = gql`
   type Query {
@@ -82,6 +82,14 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context:({context})=>{
+    if(context.clientContext.user){
+    return {user:context.clientContext.user.sub}
+
+    }else{
+      return {}
+    }
+  },
   introspection: true,
   playground: true,
 });
@@ -93,4 +101,4 @@ module.exports = server.createHandler({
   },
 });
 
-exports.handler = server.createHandler();
+// exports.handler = server.createHandler();

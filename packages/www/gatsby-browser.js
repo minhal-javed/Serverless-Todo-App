@@ -11,7 +11,7 @@ const {
 
 const authLink=setContext((_,{headers})=>{
   const user=netlifyIdentity.currentUser();
-  const token=user.token.access_token
+  const token=user.token.access_token;
   return{
     headers:{
       ...headers,
@@ -21,7 +21,7 @@ const authLink=setContext((_,{headers})=>{
 })
 
 const httpLink=new HttpLink({
-  uri:"/.netlify/functions/graphql"
+  uri:"https://serverless-todo-app.netlify.app/.netlify/functions/graphql"
 })
 
 const client=new ApolloClient({
