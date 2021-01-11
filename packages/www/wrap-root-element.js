@@ -1,15 +1,15 @@
-const React =require('react') 
-const { ThemeProvider } =require('theme-ui')
-const {deep} = require('@theme-ui/presets')
+const React = require("react");
+const { ThemeProvider } = require("theme-ui");
+const { deep } = require("@theme-ui/presets");
 const { Provider } = require("./identity-context");
 
+const tokens = {
+  ...deep,
+  size: { container: 1024 },
+};
 
-const tokens={
-    ...deep,
-    size:{container:1024}
-}
-module.exports= ({element}) => (
+module.exports = ({ element }) => (
   <Provider>
-  <ThemeProvider theme={tokens} >{element}</ThemeProvider>
+    <ThemeProvider theme={tokens}>{element}</ThemeProvider>
   </Provider>
-)
+);

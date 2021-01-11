@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { Router, Link } from "@reach/router";
 import { Container, Flex, Heading, Button, NavLink } from "theme-ui";
 import { IdentityContext } from "../../identity-context";
+import Dash from '../components/dashboard'
 
-
-let Dash=()=>{
-  const {user}=useContext(IdentityContext)
-  return <div>Dash hasUser:{user && user.user_metadata.full_name}</div>
-}
+// let Dash=()=>{
+//   const {user}=useContext(IdentityContext)
+//   return <div>Dash hasUser:{user && user.user_metadata.full_name}</div>
+// }
 
 
 
@@ -41,9 +41,9 @@ let DashLoggedOut = props => {
         </Router>
       );
     }
-    // return (
-    //   <Router>
-    //     <Dash path="/app" />
-    //   </Router>
-    // );
+    return (
+      <Router>
+        <Dash path="/app" />
+      </Router>
+    );
   };
