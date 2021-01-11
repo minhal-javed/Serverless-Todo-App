@@ -94,11 +94,11 @@ const server = new ApolloServer({
   playground: true,
 });
 
-module.exports = server.createHandler({
-  cors: {
-    origin: "*",
-    credentials: true,
-  },
-});
+// module.exports = server.createHandler({
+//   cors: {
+//     origin: "*",
+//     credentials: true,
+//   },
+// });
 
-// exports.handler = server.createHandler();
+exports.handler = server.createHandler();
