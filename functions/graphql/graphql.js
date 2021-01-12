@@ -44,6 +44,8 @@ const resolvers = {
     addTodo: async (_, { text }, { user }) => {
       if (!user) {
         throw new Error("Must be Authenticated to add todos");
+        alert("Must be Authenticated to add todos");
+
       }
 
       const results = await client.query(
