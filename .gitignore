@@ -1,4 +1,4 @@
 .cache
 node_modules
 packages/www/fauna-test
-packages/www/packages
+packages/www/public
