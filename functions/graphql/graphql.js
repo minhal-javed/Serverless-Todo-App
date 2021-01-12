@@ -2,7 +2,9 @@ const { ApolloServer, gql } = require("apollo-server-lambda");
 const faunadb = require("faunadb");
 const q = faunadb.query;
 
-var client = new faunadb.Client({ secret: "fnAD_TMlK5ACB15g_2rh4aOmQsoqWiiE1xWjEq_5" });
+var client = new faunadb.Client({
+  secret: process.env.FAUNA,
+});
 
 const typeDefs = gql`
   type Query {
@@ -34,14 +36,14 @@ const resolvers = {
           done,
         }));
       }
-
-    
     },
   },
+
+  
   Mutation: {
     addTodo: async (_, { text }, { user }) => {
       if (!user) {
-        throw new Error("Must be Authenticated to ad todos");
+        throw new Error("Must be Authenticated to add todos");
       }
 
       const results = await client.query(
@@ -82,23 +84,22 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context:({context})=>{
-    if(context.clientContext.user){
-    return {user:context.clientContext.user.sub}
-
-    }else{
-      return {}
+  context: ({ context }) => {
+    if (context.clientContext.user) {
+      return { user: context.clientContext.user.sub };
+    } else {
+      return {};
     }
   },
   introspection: true,
   playground: true,
 });
 
-// module.exports = server.createHandler({
-//   cors: {
-//     origin: "*",
-//     credentials: true,
-//   },
-// });
+exports.handler = server.createHandler({
+  cors: {
+    origin: "*",
+    credentials: true,
+  },
+});
 
-exports.handler = server.createHandler();
+// exports.handler = server.createHandler();

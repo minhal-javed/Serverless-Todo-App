@@ -10,6 +10,7 @@ const {
   const netlifyIdentity = require("netlify-identity-widget");
 
 const authLink=setContext((_,{headers})=>{
+  netlifyIdentity.init({})
   const user=netlifyIdentity.currentUser();
   const token=user.token.access_token;
   return{
@@ -21,7 +22,7 @@ const authLink=setContext((_,{headers})=>{
 })
 
 const httpLink=new HttpLink({
-  uri:"/.netlify/functions/graphql"
+  uri:"/.netlify/functions/graphql/"
 })
 
 const client=new ApolloClient({
